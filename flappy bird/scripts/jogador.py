@@ -2,7 +2,7 @@ import pygame
 
 class Jogador:
     def __init__(self, tela, x, y):
-        self.tela = tela  # você esqueceu de armazenar a tela recebida no construtor
+        self.tela = tela  
         self.posicao = [x, y]
         self.tamanho = [32, 32]
         self.rect = pygame.Rect(self.posicao, self.tamanho)
@@ -28,12 +28,11 @@ class Jogador:
         self.tela.blit(self.listaImagens[self.imagemAtual], self.posicao)
 
     def atualizar(self):
-        # Atualiza a posição do pássaro com base na gravidade
+        
         self.velocidadeAtual = min(self.velocidadeAtual + self.gravidade, self.velocidadeMaxima)
         self.posicao[1] += self.velocidadeAtual
         self.rect = pygame.Rect(self.posicao, self.tamanho)  
 
-        # Detecta se o jogador apertou espaço
         teclas = pygame.key.get_pressed()
         if teclas[pygame.K_SPACE]:
             self.velocidadeAtual = -self.velocidadeMaxima * 2
